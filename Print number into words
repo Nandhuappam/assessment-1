@@ -1,0 +1,89 @@
+Write a code to read a number and print number in words
+
+Input Format
+
+Read n value
+
+Constraints
+
+1<=n<=10^7
+
+Output Format
+
+Print number in words
+
+Sample Input 0
+
+3456
+Sample Output 0
+
+THREE FOUR FIVE SIX
+program:
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+   
+    int n, num = 0, digits;
+
+    scanf("%d", &n);
+    
+    digits = (int) log10(n); 
+
+    while(n != 0)
+    {
+        num = (num * 10) + (n % 10);
+        n /= 10;
+    }
+    
+    digits =  digits - ((int) log10(num));  
+
+    while(num != 0)
+    {
+        switch(num % 10)
+        {
+            case 0: 
+                printf("ZERO ");
+                break;
+            case 1: 
+                printf("ONE ");
+                break;
+            case 2: 
+                printf("TWO ");
+                break;
+            case 3: 
+                printf("THREE ");
+                break;
+            case 4: 
+                printf("FOUR ");
+                break;
+            case 5: 
+                printf("FIVE ");
+                break;
+            case 6: 
+                printf("SIX ");
+                break;
+            case 7: 
+                printf("SEVEN ");
+                break;
+            case 8: 
+                printf("EIGHT ");
+                break;
+            case 9: 
+                printf("NINE ");
+                break;
+        }
+        
+        num /= 10;
+    }
+    
+    while(digits)
+    {
+        printf("ZERO ");
+        digits--;
+    }
+    
+    return 0;
+}
