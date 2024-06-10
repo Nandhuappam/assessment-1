@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int check_palindrome(int num) {
+    int reverse = 0, temp = num, flag = 0;
+    while (temp != 0) {
+        int remain = temp % 10;
+        reverse = reverse * 10 + remain;
+        temp = temp / 10;
+    }
+    if (num == reverse) {
+        flag = 1;
+    }
+    return flag;
+}
+
+void find_palindromes(int n) {
+    printf("%d ", n);
+    for (int i = 1; i <= n; i++) {
+        if (check_palindrome(i)) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    int n;
+scanf("%d", &n);
+    find_palindromes(n);
+    return 0;
+}
+input:5
+output:1 2 3 4 5
