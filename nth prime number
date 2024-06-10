@@ -1,0 +1,59 @@
+input:5
+output:11
+program:
+#include <stdio.h>
+
+int isPrime(int n) {
+    if (n == 1 || n == 0) return 0;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) return 0;
+    }
+    return 1;
+}
+
+int Prime(int n) {
+    int count = 0;
+    int num = 2;
+    while (1) {
+        if (isPrime(num)) {
+            count++;
+            if (count == n) return num;
+        }
+        num++;
+    }
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    printf("%d:%d\n", n, Prime(n));
+    return 0;
+}
+           (or)
+
+#include <stdio.h>
+
+int main() {
+    int n, count = 0, num = 2;
+    scanf("%d", &n);
+
+    while (1) {
+        int flag = 1;
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                flag = 0;
+                break;
+            }
+        }
+        if (flag) {
+            count++;
+            if (count == n) {
+                printf("%d\n", num);
+                return 0;
+            }
+        }
+        num++;
+    }
+    return 0;
+}
+           
