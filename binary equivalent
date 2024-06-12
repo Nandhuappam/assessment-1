@@ -1,0 +1,27 @@
+progrm to print binary equivalent of  a given number using requrtion
+program:
+#include <stdio.h>
+
+long bin(int n)
+{
+    static long m, r, a = 1;
+
+    if(n!= 0)
+    {
+         r = n % 2;
+         m = m + r * a;
+         a = a * 10;
+         bin(n / 2);
+    }
+    return m;
+}
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    printf("%d\n",bin(n));
+    return 0;
+}
+input:100
+output:1100100
