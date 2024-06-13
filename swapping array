@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+void min(int arr[], int n) {
+    int i, j, min_idx, temp;
+    for (i = 0; i < n; i++) {
+        min_idx = i;
+        for (j = i + 1; j < n; j++) {
+            if (arr[j] < arr[min_idx]) {
+                min_idx = j;
+            }
+        }
+        temp = arr[i];
+        arr[i] = arr[min_idx];
+        arr[min_idx] = temp;
+        for (j = 0; j < n; j++) {
+            printf("%d ", arr[j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int n, i;
+    scanf("%d", &n);
+    int arr[n];
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    min(arr, n);
+    return 0;
+}
+input:5 
+50 40 30 20 10
+output:10 40 30 20 50 
+       10 20 30 40 50 
+       10 20 30 40 50 
+       10 20 30 40 50 
+       10 20 30 40 50 
