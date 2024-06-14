@@ -1,0 +1,56 @@
+Write a program to find whether the given string is a palindrome or not
+
+Input Format
+
+Read a string
+
+Constraints
+
+string
+
+Output Format
+
+If the given string is a Palindrome display “Palindrome”, else display “Not a Palindrome”.
+
+Sample Input 0
+
+madam
+Sample Output 0
+
+Palindrome
+Sample Input 1
+
+java
+Sample Output 1
+
+Not a Palindrome
+program:
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[100];
+    int i, j, flag = 1;
+
+    scanf("%99s", str);
+
+    i = 0;
+    j = strlen(str) - 1;
+
+    while (i < j) {
+        if (str[i] != str[j]) {
+            flag = 0;
+            break;
+        }
+        i++;
+        j--;
+    }
+
+    if (flag == 1) {
+        printf("Palindrome\n");
+    } else {
+        printf("Not a Palindrome\n");
+    }
+
+    return 0;
+}
