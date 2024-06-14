@@ -1,0 +1,90 @@
+Write a program to find the sum of elements in each row and column and also to find the greatest sum in rows and columns.
+
+Input Format
+
+Read size of rows and columns Read elements for matrix
+
+Constraints
+
+1<=n<10^7
+
+Output Format
+
+Print sum of rows in first line Print highest row no in next line Print sum of columns in next line Print highest column no in next line
+
+Sample Input 0
+
+3
+3
+1 6 8
+2 5 1
+3 8 2
+Sample Output 0
+
+15 8 13
+Row 1
+6 19 11
+Column 2
+program:
+#include <stdio.h>
+
+int main() {
+    int row, col;
+    scanf("%d", &row);
+    scanf("%d", &col);
+
+    int matrix[row][col];
+
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    int rowSum[row], colSum[col];
+    for (int i = 0; i < row; i++) {
+        rowSum[i] = 0;
+        for (int j = 0; j < col; j++) {
+            rowSum[i] += matrix[i][j];
+        }
+    }
+
+    for (int j = 0; j < col; j++) {
+        colSum[j] = 0;
+        for (int i = 0; i < row; i++) {
+            colSum[j] += matrix[i][j];
+        }
+    }
+
+    int maxRowSum = rowSum[0], maxColSum = colSum[0];
+    int maxRow = 0, maxCol = 0;
+    for (int i = 1; i < row; i++) {
+        if (rowSum[i] > maxRowSum) {
+            maxRowSum = rowSum[i];
+            maxRow = i;
+        }
+    }
+
+    for (int j = 1; j < col; j++) {
+        if (colSum[j] > maxColSum) {
+            maxColSum = colSum[j];
+            maxCol = j;
+        }
+    }
+
+    for (int i = 0; i < row; i++) {
+        printf("%d ", rowSum[i]);
+    }
+    printf("\n");
+
+    printf("Row %d\n",maxRow + 1);
+
+    for (int j = 0; j < col; j++) {
+        printf("%d ", colSum[j]);
+    }
+    printf("\n");
+
+    printf("Column %d\n",maxCol + 1);
+
+    return 0;
+}
